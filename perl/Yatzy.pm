@@ -9,11 +9,7 @@ sub chance {
 }
 
 sub yatzy {
-    my (@dice) = @_;
-    return ($dice[0] == $dice[1] and
-            $dice[1] == $dice[2] and
-            $dice[2] == $dice[3] and
-            $dice[3] == $dice[4]) ? 50 : 0;
+    return (reduce { ($a == $b) ? $a : 0 } @_) ? 50 : 0;
 }
 
 sub ones {
