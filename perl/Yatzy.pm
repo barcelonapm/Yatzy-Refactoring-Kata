@@ -12,50 +12,21 @@ sub yatzy {
     return (reduce { ($a == $b) ? $a : 0 } @_) ? 50 : 0;
 }
 
+sub group {
+    my  ($value,@dices) = @_;
+    return $value * scalar grep {$_ ==$value} @dices;
+}
+
 sub ones {
-    return scalar grep { $_ == 1} @_;
+    return group(1,@_);
 }
 
 sub twos {
-    my ( $d1, $d2, $d3, $d4, $d5 ) = @_;
-    my $sum = 0;
-    if ( $d1 == 2 ) {
-        $sum += 2;
-    }
-    if ( $d2 == 2 ) {
-        $sum += 2;
-    }
-    if ( $d3 == 2 ) {
-        $sum += 2;
-    }
-    if ( $d4 == 2 ) {
-        $sum += 2;
-    }
-    if ( $d5 == 2 ) {
-        $sum += 2;
-    }
-    return $sum;
+    return group(2,@_);
 }
 
 sub threes {
-    my ( $d1, $d2, $d3, $d4, $d5 ) = @_;
-    my $s = 0;
-    if ( $d1 == 3 ) {
-        $s += 3;
-    }
-    if ( $d2 == 3 ) {
-        $s += 3;
-    }
-    if ( $d3 == 3 ) {
-        $s += 3;
-    }
-    if ( $d4 == 3 ) {
-        $s += 3;
-    }
-    if ( $d5 == 3 ) {
-        $s += 3;
-    }
-    return $s;
+    return group(3,@_);
 }
 
 sub new {
