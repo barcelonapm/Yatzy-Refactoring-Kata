@@ -70,14 +70,10 @@ sub counts {
 }
 
 sub score_pair {
-    my ( $d1, $d2, $d3, $d4, $d5 ) = @_;
-    my @counts = counts(@_);
-    my $at;
-
-    for my $at ( 0 .. 5 ) {
-        if ( $counts[ 6 - $at - 1 ] >= 2 ) {
-            return ( 6 - $at ) * 2;
-        }
+    my %counts;
+    for (@_)  { $counts{$_}++ };
+    for (reverse 1..6) {
+        return 2*$_ if $counts{$_}>=2;
     }
     return 0;
 }
