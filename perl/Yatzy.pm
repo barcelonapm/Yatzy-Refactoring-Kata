@@ -10,16 +10,10 @@ sub chance {
 
 sub yatzy {
     my (@dice) = @_;
-    my @counts = (0) x 6;
-    for my $die (@dice) {
-        $counts[ $die - 1 ] += 1;
-    }
-    for my $i ( 0 .. 5 ) {
-        if ( $counts[$i] == 5 ) {
-            return 50;
-        }
-    }
-    return 0;
+    return ($dice[0] == $dice[1] and
+            $dice[1] == $dice[2] and
+            $dice[2] == $dice[3] and
+            $dice[3] == $dice[4]) ? 50 : 0;
 }
 
 sub ones {
