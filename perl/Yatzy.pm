@@ -47,38 +47,15 @@ sub new {
 }
 
 sub fours {
-    my ($self) = @_;
-    my $sum;
-    $sum = 0;
-    for my $at ( 0 .. 4 ) {
-        if ( $self->{dice}->[$at] == 4 ) {
-            $sum += 4;
-        }
-    }
-    return $sum;
+    return group(4,@_);
 }
 
 sub fives {
-    my ($self) = @_;
-    my $s = 0;
-    my $i;
-    for ( $i = 0; $i < @{ $self->{dice} }; $i++ ) {
-        if ( $self->{dice}->[$i] == 5 ) {
-            $s = $s + 5;
-        }
-    }
-    return $s;
+    return group(5,@_);
 }
 
 sub sixes {
-    my ($self) = @_;
-    my $sum = 0;
-    for my $at ( 0 .. $#{ $self->{dice} } ) {
-        if ( $self->{dice}->[$at] == 6 ) {
-            $sum = $sum + 6;
-        }
-    }
-    return $sum;
+    return group(6,@_);
 }
 
 sub score_pair {
