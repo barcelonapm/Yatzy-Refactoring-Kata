@@ -127,33 +127,13 @@ sub three_of_a_kind {
 }
 
 sub smallStraight {
-    my ( $d1, $d2, $d3, $d4, $d5 ) = @_;
     my @tallies = counts(@_);
-
-    if (   $tallies[0] == 1
-        && $tallies[1] == 1
-        && $tallies[2] == 1
-        && $tallies[3] == 1
-        && $tallies[4] == 1 )
-    {
-        return 15;
-    }
-    return 0;
+    return (5 == grep { $_ == 1 } @tallies[0..4]) ? 15 : 0;
 }
 
 sub largeStraight {
-    my ( $d1, $d2, $d3, $d4, $d5 ) = @_;
     my @tallies = counts(@_);
-
-    if (   $tallies[1] == 1
-        && $tallies[2] == 1
-        && $tallies[3] == 1
-        && $tallies[4] == 1
-        && $tallies[5] == 1 )
-    {
-        return 20;
-    }
-    return 0;
+    return (5 == grep { $_ == 1 } @tallies[1..5]) ? 20 : 0;
 }
 
 sub fullHouse {
