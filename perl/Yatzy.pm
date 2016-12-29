@@ -40,14 +40,8 @@ sub threes {
 }
 
 sub new {
-    my ( $class, $d1, $d2, $d3, $d4, $_5 ) = @_;
-    my @dice = (0) x 5;
-    $dice[0] = $d1;
-    $dice[1] = $d2;
-    $dice[2] = $d3;
-    $dice[3] = $d4;
-    $dice[4] = $_5;
-    my $self = { dice => \@dice };
+    my $class = shift;
+    my $self = { dice => \@_ };
     return bless $self, $class;
 }
 
