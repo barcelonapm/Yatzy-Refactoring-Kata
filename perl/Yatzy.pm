@@ -2,9 +2,10 @@ package Yatzy;
 
 use strict;
 use warnings;
+use List::Util qw(reduce);
 
 sub chance {
-    return eval join '+', @_;
+    return reduce { $a + $b } @_;
 }
 
 sub yatzy {
