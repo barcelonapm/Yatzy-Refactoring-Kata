@@ -64,6 +64,7 @@ subtest 'one_pair' => sub {
     is( Yatzy::score_pair( 3, 4, 3, 5, 6 ), 6 );
     is( Yatzy::score_pair( 5, 3, 3, 3, 5 ), 10 );
     is( Yatzy::score_pair( 5, 3, 6, 6, 5 ), 12 );
+    is( Yatzy::score_pair( 1, 3, 6, 2, 5 ), 0 );
 };
 
 subtest 'two_Pair' => sub {

@@ -72,7 +72,10 @@ sub counts {
 sub score_pair {
     my %counts;
     for (@_)  { $counts{$_}++ };
-    return 2*max reverse sort grep { $counts{$_}>=2 } keys %counts;
+    if (keys %counts < 5){
+        return 2*max reverse sort grep { $counts{$_}>=2 } keys %counts;
+    }
+    return 0;
 }
 
 sub two_pair {
