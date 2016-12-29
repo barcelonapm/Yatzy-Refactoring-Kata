@@ -148,7 +148,7 @@ sub score_pair {
     $counts[ $d5 - 1 ]++;
     my $at;
 
-    for $at ( 0 .. 5 ) {
+    for my $at ( 0 .. 5 ) {
         if ( $counts[ 6 - $at - 1 ] >= 2 ) {
             return ( 6 - $at ) * 2;
         }
@@ -275,14 +275,14 @@ sub fullHouse {
     $tallies[ $d4 - 1 ] += 1;
     $tallies[ $d5 - 1 ] += 1;
 
-    for $i ( 0 .. 5 ) {
+    for my $i ( 0 .. 5 ) {
         if ( $tallies[$i] == 2 ) {
             $_2    = 1;
             $_2_at = $i + 1;
         }
     }
 
-    for $i ( 0 .. 5 ) {
+    for my $i ( 0 .. 5 ) {
         if ( $tallies[$i] == 3 ) {
             $_3    = 1;
             $_3_at = $i + 1;
