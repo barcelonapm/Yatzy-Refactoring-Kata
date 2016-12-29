@@ -4,8 +4,7 @@ use strict;
 use warnings;
 
 sub chance {
-    my ( $d1, $d2, $d3, $d4, $d5 ) = @_;
-    return $d1+$d2+$d3+$d4+$d5;
+    return eval join '+', @_;
 }
 
 sub yatzy {
