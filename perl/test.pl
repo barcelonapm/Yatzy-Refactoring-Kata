@@ -27,16 +27,19 @@ subtest 'test_1s' => sub {
     is( Yatzy::ones( 1, 2, 1, 4, 5 ), 2 );
     is( Yatzy::ones( 6, 2, 2, 4, 5 ), 0 );
     is( Yatzy::ones( 1, 2, 1, 1, 1 ), 4 );
+    is( Yatzy->new( 1, 2, 1, 1, 1 )->ones(), 4 );
 };
 
 subtest 'test_2s' => sub {
     is( Yatzy::twos( 1, 2, 3, 2, 6 ), 4 );
     is( Yatzy::twos( 2, 2, 2, 2, 2 ), 10 );
+    is( Yatzy->new( 2, 2, 2, 2, 2 )->twos(), 10 );
 };
 
 subtest 'test_threes' => sub {
     is( Yatzy::threes( 1, 2, 3, 2, 3 ), 6 );
     is( Yatzy::threes( 2, 3, 3, 3, 3 ), 12 );
+    is( Yatzy->new( 2, 3, 3, 3, 3 )->threes(), 12 );
 };
 
 subtest 'fours_test' => sub {

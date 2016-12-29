@@ -23,7 +23,8 @@ sub yatzy {
 }
 
 sub group {
-    my  ($value,@dices) = @_;
+    my $value = shift;
+    my @dices = ref($_[0]) eq 'Yatzy' ? @{ $_[0]->{dice} } : @_;
     return $value * scalar grep {$_ ==$value} @dices;
 }
 
