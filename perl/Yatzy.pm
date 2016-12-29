@@ -9,7 +9,17 @@ sub chance {
 }
 
 sub yatzy {
-    return (reduce { ($a == $b) ? $a : 0 } @_) ? 50 : 0;
+    my (@dice) = @_;
+    my $position = <@dice>;
+
+    if (! $position) {
+        return 50;
+    }
+    if  ($position != $dice[0]){
+        return 0;
+    } else {
+        return yatzy(@dice);
+    }
 }
 
 sub group {
