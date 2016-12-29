@@ -2,7 +2,7 @@ package Yatzy;
 
 use strict;
 use warnings;
-use List::Util qw(reduce);
+use List::Util qw(reduce max);
 
 sub chance {
     return reduce { $a + $b } @_;
@@ -72,10 +72,7 @@ sub counts {
 sub score_pair {
     my %counts;
     for (@_)  { $counts{$_}++ };
-    for (reverse 1..6) {
-        return 2*$_ if $counts{$_}>=2;
-    }
-    return 0;
+    return 2*max reverse sort grep { $counts{$_}>=2 } keys %counts;
 }
 
 sub two_pair {
