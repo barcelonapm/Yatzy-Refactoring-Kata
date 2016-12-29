@@ -10,9 +10,9 @@ sub chance {
 
 sub yatzy {
     my (@dice) = @_;
-    my $position = <@dice>;
+    my $position = pop @dice;
 
-    if (! $position) {
+    if (@dice == 0) {
         return 50;
     }
     if  ($position != $dice[0]){
