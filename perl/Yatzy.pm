@@ -13,24 +13,7 @@ sub yatzy {
 }
 
 sub ones {
-    my ( $d1, $d2, $d3, $d4, $d5 ) = @_;
-    my $sum = 0;
-    if ( $d1 == 1 ) {
-        $sum++;
-    }
-    if ( $d2 == 1 ) {
-        $sum++;
-    }
-    if ( $d3 == 1 ) {
-        $sum++;
-    }
-    if ( $d4 == 1 ) {
-        $sum++;
-    }
-    if ( $d5 == 1 ) {
-        $sum++;
-    }
-    return $sum;
+    return scalar grep { $_ == 1} @_;
 }
 
 sub twos {
