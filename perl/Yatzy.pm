@@ -58,7 +58,7 @@ sub sixes {
     return group(6,@_);
 }
 
-sub score_pair {
+sub counts {
     my ( $d1, $d2, $d3, $d4, $d5 ) = @_;
     my @counts = (0) x 6;
     $counts[ $d1 - 1 ]++;
@@ -66,6 +66,12 @@ sub score_pair {
     $counts[ $d3 - 1 ]++;
     $counts[ $d4 - 1 ]++;
     $counts[ $d5 - 1 ]++;
+    return @counts;
+}
+
+sub score_pair {
+    my ( $d1, $d2, $d3, $d4, $d5 ) = @_;
+    my @counts = counts(@_);
     my $at;
 
     for my $at ( 0 .. 5 ) {
@@ -78,12 +84,7 @@ sub score_pair {
 
 sub two_pair {
     my ( $d1, $d2, $d3, $d4, $d5 ) = @_;
-    my @counts = (0) x 6;
-    $counts[ $d1 - 1 ]++;
-    $counts[ $d2 - 1 ]++;
-    $counts[ $d3 - 1 ]++;
-    $counts[ $d4 - 1 ]++;
-    $counts[ $d5 - 1 ]++;
+    my @counts = counts(@_);
     my $n     = 0;
     my $score = 0;
 
@@ -103,13 +104,7 @@ sub two_pair {
 
 sub four_of_a_kind {
     my ( $_1, $_2, $d3, $d4, $d5 ) = @_;
-    my @tallies;
-    @tallies = (0) x 6;
-    $tallies[ $_1 - 1 ]++;
-    $tallies[ $_2 - 1 ]++;
-    $tallies[ $d3 - 1 ]++;
-    $tallies[ $d4 - 1 ]++;
-    $tallies[ $d5 - 1 ]++;
+    my @tallies = counts(@_);
 
     for my $i ( 0 .. 5 ) {
         if ( $tallies[$i] >= 4 ) {
@@ -121,13 +116,7 @@ sub four_of_a_kind {
 
 sub three_of_a_kind {
     my ( $d1, $d2, $d3, $d4, $d5 ) = @_;
-    my @t;
-    @t = (0) x 6;
-    $t[ $d1 - 1 ]++;
-    $t[ $d2 - 1 ]++;
-    $t[ $d3 - 1 ]++;
-    $t[ $d4 - 1 ]++;
-    $t[ $d5 - 1 ]++;
+    my @t = counts(@_);
 
     for my $i ( ( 0, 1, 2, 3, 4, 5 ) ) {
         if ( $t[$i] >= 3 ) {
@@ -139,13 +128,7 @@ sub three_of_a_kind {
 
 sub smallStraight {
     my ( $d1, $d2, $d3, $d4, $d5 ) = @_;
-    my @tallies;
-    @tallies = (0) x 6;
-    $tallies[ $d1 - 1 ]++;
-    $tallies[ $d2 - 1 ]++;
-    $tallies[ $d3 - 1 ]++;
-    $tallies[ $d4 - 1 ]++;
-    $tallies[ $d5 - 1 ]++;
+    my @tallies = counts(@_);
 
     if (   $tallies[0] == 1
         && $tallies[1] == 1
@@ -160,13 +143,7 @@ sub smallStraight {
 
 sub largeStraight {
     my ( $d1, $d2, $d3, $d4, $d5 ) = @_;
-    my @tallies;
-    @tallies = (0) x 6;
-    $tallies[ $d1 - 1 ]++;
-    $tallies[ $d2 - 1 ]++;
-    $tallies[ $d3 - 1 ]++;
-    $tallies[ $d4 - 1 ]++;
-    $tallies[ $d5 - 1 ]++;
+    my @tallies = counts(@_);
 
     if (   $tallies[1] == 1
         && $tallies[2] == 1
@@ -181,19 +158,12 @@ sub largeStraight {
 
 sub fullHouse {
     my ( $d1, $d2, $d3, $d4, $d5 ) = @_;
-    my @tallies;
+    my @tallies = counts(@_);
     my $i;
     my $_2    = 0;
     my $_2_at = 0;
     my $_3    = 0;
     my $_3_at = 0;
-
-    @tallies = (0) x 6;
-    $tallies[ $d1 - 1 ] += 1;
-    $tallies[ $d2 - 1 ] += 1;
-    $tallies[ $d3 - 1 ] += 1;
-    $tallies[ $d4 - 1 ] += 1;
-    $tallies[ $d5 - 1 ] += 1;
 
     for my $i ( 0 .. 5 ) {
         if ( $tallies[$i] == 2 ) {
